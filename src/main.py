@@ -75,7 +75,7 @@ def train_loop(args):
     val_loader = fetch_val_dataloader(args)
 
     vae_loss = torch.nn.MSELoss()
-    classification_loss = torch.nn.CrossEntropyLoss(weight = torch.Tensor([1,1,0.5,1,0.5,0.25,1]).cuda())
+    classification_loss = torch.nn.CrossEntropyLoss()
     prototype_loss = torch.nn.MSELoss()
     orientation_loss = torch.nn.MSELoss()
 
@@ -198,7 +198,8 @@ if __name__ == "__main__":
 """
 Class weights - 
 
-BreastMNIST - [1,0.333] - 600 epochs
-RetinaMNIST - [0.2,0.8,0.5,0.5,1], 500 epochs
-
+BreastMNIST - [1,0.333]
+PneumoniaMNIST - [1, 0.333]
+RetinaMNIST - [0.2,0.8,0.5,0.5,1]
+OCT_MNIST - [0.333, 1, 1, 0.2]
 """
